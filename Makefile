@@ -6,7 +6,7 @@
 #    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 02:35:22 by ivankozlov        #+#    #+#              #
-#    Updated: 2019/05/21 03:05:01 by ivankozlov       ###   ########.fr        #
+#    Updated: 2019/05/21 04:08:08 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ all: $(NAME)
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(FLAGS) $(LIB) -o $(NAME) $(OBJ)
 	@echo "[INFO] $(NAME) executable created"
 
