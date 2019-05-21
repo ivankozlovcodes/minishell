@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:31:25 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/21 06:23:19 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/21 07:06:27 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int				main(void)
 		display_prompt();
 		input = get_input();
 		ft_printf("input |%s|\n", input);
+		exec_input(input);
 		ft_free(1, input);
 	}
 	return (0);

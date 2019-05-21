@@ -24,10 +24,23 @@ struct					s_env
 };
 typedef struct s_env	t_env;
 
+typedef int				(*t_exec_func) (char *, char **);
+
 extern t_env			*g_env;
 
 void					init_env(void);
 
 void					display_prompt(void);
+
+int						exec_input(char *input);
+
+int						cd(char *name, char **args);
+int						env(char *name, char **args);
+int						echo(char *name, char **args);
+int						exitt(char *name, char **args);
+int						setenv(char *name, char **args);
+int						unsetenv(char *name, char **args);
+
+void					not_implemented(char *name);
 
 #endif

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 02:41:02 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/21 06:50:39 by ivankozlov       ###   ########.fr       */
+/*   Created: 2019/05/21 06:48:33 by ivankozlov        #+#    #+#             */
+/*   Updated: 2019/05/21 06:49:22 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_printf.h"
 
-int		cd(char *name, char **args)
+void	not_implemented(char *name)
 {
-	not_implemented(name);
-	return (0);
+	ft_printf("%s is not implemented yet.\n", name);
 }
