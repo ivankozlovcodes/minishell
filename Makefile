@@ -6,7 +6,7 @@
 #    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 02:35:22 by ivankozlov        #+#    #+#              #
-#    Updated: 2019/05/21 04:08:08 by ivankozlov       ###   ########.fr        #
+#    Updated: 2019/05/21 07:05:40 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,10 @@ SRC_FILES = $(notdir $(wildcard $(SRC_DIR)*.c))
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 
 # builtins
-BUILTIN_DIR = builtin/
-BUILTIN_FILES = $(notdir $(wildcard $(MD5_DIR)*.c))
+BUILTIN_DIR = builtins/
+BUILTIN_FILES = $(notdir $(wildcard $(SRC_DIR)$(BUILTIN_DIR)*.c))
 BUILTIN_OBJ_FILES = $(BUILTIN_FILES:%.c=%.o)
-BUILTIN_OBJ = $(addprefix $(OBJ_DIR), $(BUILTIN_OBJ_FILES))
+BUILTIN_OBJ = $(addprefix $(BUILTIN_DIR), $(BUILTIN_OBJ_FILES))
 
 # full paths
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
@@ -54,16 +54,18 @@ all: $(NAME)
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)$(BUILTIN_DIR)
+
+$(NAME): $(OBJ_DIR) $(OBJ) $(LIBFT)
 	$(CC) $(FLAGS) $(LIB) -o $(NAME) $(OBJ)
 	@echo "[INFO] $(NAME) executable created"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR)$(BUILTIN_DIR)%.o: $(BUILTIN_DIR)%.c
-	@mkdir -p $(OBJ_DIR)$(BUILTIN_DIR)
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
