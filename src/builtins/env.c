@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 07:22:22 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/23 13:25:32 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/23 22:13:07 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 int		env(char *name, char **args)
 {
-	size_t		i;
-
-	i = -1;
-	while (g_env[++i].name)
-		ft_printf("%s=%s\n", g_env[i].name, g_env[i].value);
+	dict_print(g_env, "%s=%s\n");
 	return (0);
 }
