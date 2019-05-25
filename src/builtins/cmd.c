@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 08:36:10 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/25 10:17:47 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/25 12:46:16 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static int	exec_cmd(char *path, char **args)
 
 	envv = dict_to_darr(g_env, pair_to_str);
 	pid = fork();
+	signal(SIGINT, process_signal_handler);
 	if (pid < 0)
 	{
 		ft_printf("minishell: fork failed\n");

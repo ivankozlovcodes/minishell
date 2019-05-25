@@ -6,10 +6,11 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:31:25 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/24 22:40:32 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/25 12:42:13 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <signal.h>
 #include <unistd.h>
 
 #include "minishell.h"
@@ -39,6 +40,7 @@ int				main(void)
 	while (1)
 	{
 		display_prompt();
+		signal(SIGINT, signal_handler);
 		input = get_input();
 		ft_printf("input |%s|\n", input);
 		ret = exec_input(input);
