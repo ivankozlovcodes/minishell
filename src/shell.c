@@ -6,19 +6,13 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 06:20:27 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/25 08:26:34 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/25 08:37:08 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "ftstring.h"
 #include "memory.h"
-
-static int				run_cmd(char *name, char **args)
-{
-	not_implemented("run cmd");
-	return (0);
-}
+#include "ftstring.h"
+#include "minishell.h"
 
 static t_exec_func		get_func(char *name)
 {
