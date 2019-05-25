@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 06:20:27 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/24 22:37:57 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/25 08:26:34 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ static int				run_cmd(char *name, char **args)
 
 static t_exec_func		get_func(char *name)
 {
-	int						idx;
-	static t_exec_func		table[] = {
-		cd, env, echo, exitt, setenv, unsetenv
-	};
-	static char				*names[] = {
-		"cd", "env", "echo", "exit", "setenv", "unsetenv"
-	};
+	t_exec_func			ret;
+	static t_dict_pair	funcs[] = {
+		(t_dict_pair){ .key = "cd", .val = cd },
+		(t_dict_pair){ .key = "env", .val = env },
+		(t_dict_pair){ .key = "echo", .val = echo },
+		(t_dict_pair){ .key = "exit", .val = exitt },
+		(t_dict_pair){ .key = "setenv", .val = setenv },
+		(t_dict_pair){ .key = "unsetenv", .val = unsetenv } };
+	static t_dict		disp = { .count = 6, .capacity = 6, .values = funcs };
 
-	idx = ft_straridx(name, names);
-	if (idx >= 0)
-		return (table[idx]);
-	return (run_cmd);
+	ret = dict_find(&disp, name);
+	return (ret == NULL ? run_cmd : ret);
 }
 
 static int				exec_command(char **args)
