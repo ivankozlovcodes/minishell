@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 06:20:27 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/21 07:29:39 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/24 22:37:57 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,28 @@ static int				exec_command(char **args)
 	t_exec_func		func;
 
 	func = get_func(args[0]);
-	func(args[0], args + 1);
-	return (0);
+	return (func(args[0], args + 1));
 }
 
 int						exec_input(char *input)
 {
 	size_t	i;
+	int		ret;
 	char	**command;
 	char	**commands;
 
-	commands = ft_strsplit(input, ';');
 	i = -1;
+	ret = 0;
+	commands = ft_strsplit(input, ';');
 	while (commands[++i])
 	{
 		// todo: split white space
 		command = ft_strsplit(commands[i], ' ');
-		exec_command(command);
+		ret = exec_command(command);
+		if (ret == EXIT_SIGNAL)
+			break ;
 		darrfree((void **)command);
 	}
 	darrfree((void **)commands);
-	return (0);
+	return (ret);
 }
