@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:41:02 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/26 18:50:08 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 03:37:52 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static void		cd_error(char *path)
 	char	*msg;
 
 	if (access(path, F_OK) == -1)
-		msg = "no such file or directory";
+		msg = "No such file or directory";
 	else if (access(path, R_OK) == -1)
-		msg = "permission denied";
+		msg = "Permission denied";
 	else
-		msg = "not a directory";
-	ft_printf("cd: %s: %s\n", msg, path);
+		msg = "Not a directory";
+	print_minishell_message("%s cd: %s: %s\n", path, msg);
 }
 
 static char		*get_path(char **args)

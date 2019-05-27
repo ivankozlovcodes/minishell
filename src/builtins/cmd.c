@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 08:36:10 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/27 07:35:57 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 07:36:20 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int		exec_cmd(char *path, char **args)
 	signal(SIGINT, process_signal_handler);
 	if (pid < 0)
 	{
-		ft_printf("minishell: fork failed\n");
+		print_minishell_message("%s fork failed\n", 0, 0);
 		return (1);
 	}
 	else if (pid == 0)
@@ -75,13 +75,13 @@ int				run_cmd(char *name, char **args)
 	ret = 0;
 	path = FILE_EXISTS(name, f) ? name : find_cmd_path(name, &f);
 	if (S_ISDIR(f.st_mode))
-		ft_printf("minishell: %s: is a directory\n", path);
+		print_minishell_message("%s %s: is a directory\n", path, 0);
 	else if (S_ISREG(f.st_mode))
 	{
 		if (f.st_mode & S_IXUSR)
 			ret = exec_cmd(path, args);
 		else
-			ft_printf("minishell: Permission denied\n");
+			print_minishell_message("%s Permission denied\n", 0, 0);
 	}
 	else
 		print_minishell_message("%s command not found: %s\n", name, 0);

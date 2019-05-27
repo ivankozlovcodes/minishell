@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:31:25 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/25 12:42:13 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 03:35:16 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ static char		*get_input(void)
 	return (string_destroy(s, TRUE));
 }
 
+void			print_minishell_message(char *fmt, char *msg1, char *msg2)
+{
+	ft_printf(fmt, "minishell:", msg1, msg2);
+}
+
 int				main(void)
 {
 	int		ret;
@@ -42,7 +47,6 @@ int				main(void)
 		display_prompt();
 		signal(SIGINT, signal_handler);
 		input = get_input();
-		ft_printf("input |%s|\n", input);
 		ret = exec_input(input);
 		ft_free(1, input);
 		if (ret == EXIT_SIGNAL)

@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:58:51 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/27 03:24:22 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 03:34:32 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ int						run_cmd(char *name, char **args);
 int						unsetenv(char *name, char **args);
 
 void					not_implemented(char *name);
+
+void					print_minishell_message(char *fmt,
+	char *msg1, char *msg2);
 
 #endif

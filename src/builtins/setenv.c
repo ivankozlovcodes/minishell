@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 07:22:03 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/26 19:43:10 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 03:39:56 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		setenv(char *name, char **args)
 	else if (valid_env_name(env_name))
 		dict_insert(g_env, env_name, env_value);
 	else
-		ft_printf("setenv: Variable name must begin with a letter\
-and contain only alphanumeric characters.\n");
+		print_minishell_message("%s setenv: Variable name must begin\
+with a letter and contain only alphanumeric characters.\n", 0, 0);
 	return (0);
 }
