@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 08:36:10 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/27 07:35:31 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 07:35:57 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char		*find_cmd_path(char *cmd_name, struct stat *f)
 	return (path_var);
 }
 
-static int	exec_cmd(char *path, char **args)
+static int		exec_cmd(char *path, char **args)
 {
 	int		pid;
 	int		status;
@@ -66,7 +66,7 @@ static int	exec_cmd(char *path, char **args)
 	return (0);
 }
 
-int			run_cmd(char *name, char **args)
+int				run_cmd(char *name, char **args)
 {
 	struct stat		f;
 	int				ret;

@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 06:20:27 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/26 17:03:06 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 03:27:28 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int						exec_input(char *input)
 	commands = ft_strsplit(input, ';');
 	while (commands[++i])
 	{
-		// todo: split white space
 		command = ft_strsplit(commands[i], ' ');
 		ret = exec_command(command);
 		if (ret == EXIT_SIGNAL)

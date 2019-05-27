@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:16 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/26 19:59:46 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 03:26:47 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char		*expand_arg(char *arg)
 	return (ft_strdup(arg));
 }
 
-char		**expand_args(char **args)
+char			**expand_args(char **args)
 {
 	size_t		i;
 	size_t		len;
