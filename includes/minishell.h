@@ -15,7 +15,7 @@
 
 # include "dictionary.h"
 
-# include "ft_printf.h"
+# include <errno.h>
 
 # define PATH "PATH"
 
@@ -40,6 +40,11 @@ typedef int				(*t_exec_func) (char *, char **);
 
 extern t_dict			*g_env;
 
+enum					g_error
+{
+	EQOUTE = 1,
+};
+
 void					init_env(void);
 char					*pair_to_str(t_dict_pair pair);
 bool					valid_env_name(char *name);
@@ -60,6 +65,8 @@ int						exitt(char *name, char **args);
 int						setenv(char *name, char **args);
 int						run_cmd(char *name, char **args);
 int						unsetenv(char *name, char **args);
+
+size_t					token_len(const void *token);
 
 void					not_implemented(char *name);
 

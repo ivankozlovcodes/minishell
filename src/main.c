@@ -36,6 +36,12 @@ void			print_minishell_message(char *fmt, char *msg1, char *msg2)
 	ft_printf(fmt, "minishell:", msg1, msg2);
 }
 
+void			print_minishell_error(void)
+{
+	if (errno == EQOUTE)
+		print_minishell_message("%s Unmatched \".\n", 0, 0);
+}
+
 int				main(void)
 {
 	int		ret;
@@ -48,6 +54,7 @@ int				main(void)
 		signal(SIGINT, signal_handler);
 		input = get_input();
 		ret = exec_input(input);
+		print_minishell_error();
 		ft_free(1, input);
 		if (ret == EXIT_SIGNAL)
 			break ;
