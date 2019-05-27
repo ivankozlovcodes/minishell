@@ -69,6 +69,7 @@ int						setenv(char *name, char **args);
 int						run_cmd(char *name, char **args);
 int						unsetenv(char *name, char **args);
 
+char					*remove_quotes(char *s);
 size_t					token_len(const void *token);
 
 void					not_implemented(char *name);

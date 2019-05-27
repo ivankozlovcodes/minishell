@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:16 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/27 03:26:47 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 16:19:28 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,14 @@ static char		*transform_arg(char *arg)
 static char		*expand_arg(char *arg)
 {
 	size_t		i;
+	char		*ret;
 	bool		strong;
 
 	i = -1;
 	strong = arg[0] == '\'';
-	if (!strong)
-		return (transform_arg(arg));
-	return (ft_strdup(arg));
+	ret = !strong ? transform_arg(arg) : ft_strdup(arg);
+	remove_quotes(ret);
+	return (ret);
 }
 
 char			**expand_args(char **args)
