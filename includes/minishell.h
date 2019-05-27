@@ -13,6 +13,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "ftstring.h"
 # include "dictionary.h"
 
 # include <errno.h>
@@ -35,12 +36,13 @@
 # define EXIT_SIGNAL -1
 
 # define FILE_EXISTS(p, f) (lstat(p, &f) != -1)
+# define IS_QUOTE_SHELL(c) (IS_QUOTE(c) || c == '`')
 
 typedef int				(*t_exec_func) (char *, char **);
 
 extern t_dict			*g_env;
 
-enum					g_error
+enum					e_error
 {
 	EQOUTE = 1,
 };
@@ -54,6 +56,7 @@ void					process_signal_handler(int signo);
 
 void					display_prompt(void);
 
+char					**tokenize(char *input);
 int						exec_input(char *input);
 
 char					**expand_args(char **args);
