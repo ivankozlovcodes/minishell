@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 02:58:51 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/26 19:28:16 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/26 19:28:37 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void					process_signal_handler(int signo);
 void					display_prompt(void);
 
 int						exec_input(char *input);
+
+char					**expand_args(char **args);
 
 int						cd(char *name, char **args);
 int						env(char *name, char **args);

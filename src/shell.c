@@ -6,10 +6,11 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 06:20:27 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/25 08:37:08 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/26 17:03:06 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stack.h"
 #include "memory.h"
 #include "ftstring.h"
 #include "minishell.h"
@@ -32,10 +33,15 @@ static t_exec_func		get_func(char *name)
 
 static int				exec_command(char **args)
 {
+	int				ret;
 	t_exec_func		func;
+	char			**expanded_args;
 
 	func = get_func(args[0]);
-	return (func(args[0], args + 1));
+	expanded_args = expand_args(args);
+	ret = func(*expanded_args, expanded_args + 1);
+	darrfree((void **)expanded_args);
+	return (ret);
 }
 
 int						exec_input(char *input)
