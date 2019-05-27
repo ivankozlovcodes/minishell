@@ -15,6 +15,8 @@
 
 # include "dictionary.h"
 
+# include "ft_printf.h"
+
 # define PATH "PATH"
 
 # define HOME "HOME"
