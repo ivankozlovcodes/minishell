@@ -6,16 +6,22 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 03:16:52 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/25 10:17:13 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/26 19:39:10 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "chars.h"
 #include "memory.h"
 #include "ftstring.h"
 #include "ft_printf.h"
 #include "minishell.h"
 
 t_dict	*g_env;
+
+bool			valid_env_name(char *name)
+{
+	return (name && ft_isalpha(*name) && strisalnum(name));
+}
 
 char			*pair_to_str(t_dict_pair pair)
 {
