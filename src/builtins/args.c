@@ -6,10 +6,11 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:16 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/26 18:41:59 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/26 19:59:46 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "chars.h"
 #include "memory.h"
 #include "ft_math.h"
 #include "dstring.h"
@@ -18,11 +19,13 @@
 
 static char		*get_env_name(char *arg)
 {
-	int		i;
+	size_t	i;
 	char	*ret;
 
-	i = ft_strchrstri(arg, "$~");
-	i = i < 0 ? ft_strlen(arg) : i;
+	i = 0;
+	while (arg[i] && ft_isalnum(arg[i]))
+		i++;
+	i += i == 0;
 	ret = ft_strnew(i);
 	ft_strncpy(ret, arg, i);
 	return (ret);
@@ -33,10 +36,9 @@ static char		*transform_env(char **arg)
 	char	*ret;
 	char	*name;
 
-	*arg += 1;
-	name = get_env_name(*arg);
-	*arg += ft_strlen(name);
-	ret = dict_find(g_env, name);
+	name = get_env_name(*arg + 1);
+	*arg += ft_strlen(name) + 1;
+	ret = strisalnum(name) ? dict_find(g_env, name) : ft_strjoin("$", name);
 	ret = ret == NULL ? "" : ret;
 	ft_free(1, name);
 	return (ret);
