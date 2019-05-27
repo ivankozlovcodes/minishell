@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 08:36:10 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/25 12:46:16 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 07:35:31 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char		*find_cmd_path(char *cmd_name, struct stat *f)
 		tmp = ft_strjoin(paths[i], "/");
 		path_var = ft_strjoin(tmp, cmd_name);
 		ft_free(1, tmp);
-		if (lstat(path_var, f) != -1)
+		if (FILE_EXISTS(path_var, *f))
 			break ;
 		ft_strdel(&path_var);
 	}
@@ -73,19 +73,18 @@ int			run_cmd(char *name, char **args)
 	char			*path;
 
 	ret = 0;
-	path = find_cmd_path(name, &f);
-	if (path)
+	path = FILE_EXISTS(name, f) ? name : find_cmd_path(name, &f);
+	if (S_ISDIR(f.st_mode))
+		ft_printf("minishell: %s: is a directory\n", path);
+	else if (S_ISREG(f.st_mode))
 	{
-		if (S_ISREG(f.st_mode))
-		{
-			if (f.st_mode & S_IXUSR)
-				ret = exec_cmd(path, args);
-			else
-				ft_printf("minishell: Permission denied\n");
-		}
-		ft_free(1, path);
+		if (f.st_mode & S_IXUSR)
+			ret = exec_cmd(path, args);
+		else
+			ft_printf("minishell: Permission denied\n");
 	}
 	else
-		ft_printf("minishell: command not found: %s\n", name);
+		print_minishell_message("%s command not found: %s\n", name, 0);
+	ft_free(1, path);
 	return (ret);
 }
