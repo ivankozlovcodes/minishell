@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 14:44:46 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/27 17:22:15 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/27 17:43:28 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		get_token(t_list **alst, char *input, int s, int e)
 	char		*token;
 
 	token = ft_strndup(input + s, e - s);
-	new = ft_lstnew(token, ft_strlen(token));
+	new = ft_lstnew(token, ft_strlen(token) + 1);
 	LST_ADDCREATE(*alst, new);
 }
 
