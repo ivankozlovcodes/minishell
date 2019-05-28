@@ -6,30 +6,15 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:16 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/28 13:11:21 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/28 13:53:48 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "chars.h"
 #include "memory.h"
 #include "ft_math.h"
 #include "dstring.h"
 #include "ftstring.h"
 #include "minishell.h"
-
-static char		*get_env_name(char *arg)
-{
-	size_t	i;
-	char	*ret;
-
-	i = 0;
-	while (arg[i] && ft_isalnum(arg[i]))
-		i++;
-	i += i == 0;
-	ret = ft_strnew(i);
-	ft_strncpy(ret, arg, i);
-	return (ret);
-}
 
 static char		*transform_env(char **arg)
 {
