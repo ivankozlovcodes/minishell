@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 14:44:46 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/28 13:23:22 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/28 13:50:39 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 #include "memory.h"
 #include "ftstring.h"
 #include "minishell.h"
-
-char					*ft_strndup(const char *src, size_t n)
-{
-	char	*ret;
-
-	ret = ft_strnew(n);
-	return (ft_memcpy(ret, src, n));
-}
 
 void		get_token(t_list **alst, char *input, int s, int e)
 {
