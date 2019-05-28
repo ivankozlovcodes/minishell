@@ -6,7 +6,7 @@
 #    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 02:35:22 by ivankozlov        #+#    #+#              #
-#    Updated: 2019/05/21 07:05:40 by ivankozlov       ###   ########.fr        #
+#    Updated: 2019/05/28 13:33:25 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,10 @@ NAME = minishell
 
 # compiler
 CC = gcc
+
+ifndef C_ENV
+	export C_ENV=PROD
+endif
 ifeq (${C_ENV}, DEV)
 	FLAGS = -g
 else ifeq (${C_ENV}, PROD)
@@ -55,6 +59,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 $(OBJ_DIR):
+	echo ${C_ENV}
 	mkdir -p $(OBJ_DIR)
 	mkdir -p $(OBJ_DIR)$(BUILTIN_DIR)
 
