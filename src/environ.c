@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 03:16:52 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/27 03:28:01 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/28 13:27:06 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ char	*pair_to_str(t_dict_pair pair)
 
 void	init_env(void)
 {
+	size_t			i;
 	extern char		**environ;
 	char			*separator;
-	size_t			i;
-	size_t			len;
 
 	i = -1;
 	g_env = dict_init(0);
