@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:40:16 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/28 13:53:48 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/06/06 01:19:20 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,21 @@ static char		*transform_env(char **arg)
 
 static char		*transform_special(char **arg)
 {
-	size_t		i;
+	size_t			i;
+	static char		buf[100];
 
 	i = 0;
+	ft_bzero(buf, 100);
 	while ((*arg)[i] == '~')
 		i++;
 	*arg += i;
 	if (i == 1)
 		return (dict_find(g_env, HOME));
 	else if (i > 1)
-		return (ft_strnewc(i, '~'));
+	{
+		ft_memset(buf, '~', i);
+		return ((char *)buf);
+	}
 	return (NULL);
 }
 
